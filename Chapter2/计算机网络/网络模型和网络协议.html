@@ -1,0 +1,940 @@
+
+<!DOCTYPE HTML>
+<html lang="zh" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>网络模型和网络协议 · 前端面试小本本</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="BarryYe">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-disqus/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-pageview-count/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="TCP挥手和握手.html" />
+    
+    
+    <link rel="prev" href="../计算机网络.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="輸入並搜尋" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../Chapter1/">
+            
+                <a href="../../Chapter1/">
+            
+                    
+                    自我介绍一下
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    计算机基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../操作系统.html">
+            
+                <a href="../操作系统.html">
+            
+                    
+                    操作系统
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="../操作系统/进程的三种状态.html">
+            
+                <a href="../操作系统/进程的三种状态.html">
+            
+                    
+                    进程的三种状态
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2" data-path="../操作系统/进程调度.html">
+            
+                <a href="../操作系统/进程调度.html">
+            
+                    
+                    进程调度
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.3" data-path="../操作系统/死锁.html">
+            
+                <a href="../操作系统/死锁.html">
+            
+                    
+                    死锁
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.4" data-path="../操作系统/进程间通信方式.html">
+            
+                <a href="../操作系统/进程间通信方式.html">
+            
+                    
+                    进程间通信方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.5" data-path="../操作系统/进程与线程.html">
+            
+                <a href="../操作系统/进程与线程.html">
+            
+                    
+                    进程与线程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.6" data-path="../操作系统/并发与并行.html">
+            
+                <a href="../操作系统/并发与并行.html">
+            
+                    
+                    并发与并行
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../数据结构与算法.html">
+            
+                <a href="../数据结构与算法.html">
+            
+                    
+                    数据结构与算法
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.2.1" data-path="../数据结构与算法/排序算法.html">
+            
+                <a href="../数据结构与算法/排序算法.html">
+            
+                    
+                    排序算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.2" data-path="../数据结构与算法/动态查找树比较.html">
+            
+                <a href="../数据结构与算法/动态查找树比较.html">
+            
+                    
+                    动态查找树比较
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../计算机网络.html">
+            
+                <a href="../计算机网络.html">
+            
+                    
+                    计算机网络
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.3.3.1" data-path="网络模型和网络协议.html">
+            
+                <a href="网络模型和网络协议.html">
+            
+                    
+                    网络模型和网络协议
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.2" data-path="TCP挥手和握手.html">
+            
+                <a href="TCP挥手和握手.html">
+            
+                    
+                    TCP握手挥手
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.3" data-path="TCP&UDP.html">
+            
+                <a href="TCP&UDP.html">
+            
+                    
+                    TCP和UDP
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../JAVA.html">
+            
+                <a href="../JAVA.html">
+            
+                    
+                    JAVA
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.4.1" data-path="../JAVA/设计模式.html">
+            
+                <a href="../JAVA/设计模式.html">
+            
+                    
+                    设计模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4.2" data-path="../JAVA/抽象类与接口.html">
+            
+                <a href="../JAVA/抽象类与接口.html">
+            
+                    
+                    抽象类与接口
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4.3" data-path="../JAVA/泛型.html">
+            
+                <a href="../JAVA/泛型.html">
+            
+                    
+                    泛型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../../Chapter3/README..html">
+            
+                <a href="../../Chapter3/README..html">
+            
+                    
+                    HTTP/HTTPS/浏览器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../../Chapter3/HTTP.html">
+            
+                <a href="../../Chapter3/HTTP.html">
+            
+                    
+                    HTTP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../../Chapter3/HTTPS.html">
+            
+                <a href="../../Chapter3/HTTPS.html">
+            
+                    
+                    HTTPS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../../Chapter3/浏览器.html">
+            
+                <a href="../../Chapter3/浏览器.html">
+            
+                    
+                    浏览器
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../../Chapter4/">
+            
+                <a href="../../Chapter4/">
+            
+                    
+                    HTML
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../../Chapter5/">
+            
+                <a href="../../Chapter5/">
+            
+                    
+                    CSS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../../Chapter6/">
+            
+                <a href="../../Chapter6/">
+            
+                    
+                    JavaScript /ES6
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../../Chapter7/">
+            
+                <a href="../../Chapter7/">
+            
+                    
+                    Vue
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../../Chapter7/vue生命周期.html">
+            
+                <a href="../../Chapter7/vue生命周期.html">
+            
+                    
+                    Vue的生命周期
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../../Chapter7/双向绑定.html">
+            
+                <a href="../../Chapter7/双向绑定.html">
+            
+                    
+                    双向绑定
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../../Chapter7/virtual dom.html">
+            
+                <a href="../../Chapter7/virtual dom.html">
+            
+                    
+                    virtual dom
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../../Chapter8/">
+            
+                <a href="../../Chapter8/">
+            
+                    
+                    来编个程吧
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../../Chapter8/归并&快速排序.html">
+            
+                <a href="../../Chapter8/归并&快速排序.html">
+            
+                    
+                    归并&快速排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../../Chapter8/二分查找.html">
+            
+                <a href="../../Chapter8/二分查找.html">
+            
+                    
+                    二分查找
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../../Chapter8/全排列.html">
+            
+                <a href="../../Chapter8/全排列.html">
+            
+                    
+                    全排列
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="../../Chapter8/N数之和.html">
+            
+                <a href="../../Chapter8/N数之和.html">
+            
+                    
+                    N数之和
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5" data-path="../../Chapter8/二叉树路径总和.html">
+            
+                <a href="../../Chapter8/二叉树路径总和.html">
+            
+                    
+                    二叉树路径总和
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.6" data-path="../../Chapter8/深拷贝.html">
+            
+                <a href="../../Chapter8/深拷贝.html">
+            
+                    
+                    深拷贝
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.7" data-path="../../Chapter8/闭包实现单例模式.html">
+            
+                <a href="../../Chapter8/闭包实现单例模式.html">
+            
+                    
+                    闭包实现单例模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.8" data-path="../../Chapter8/防抖和节流.html">
+            
+                <a href="../../Chapter8/防抖和节流.html">
+            
+                    
+                    防抖和节流
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.9" data-path="../../Chapter8/promise相关.html">
+            
+                <a href="../../Chapter8/promise相关.html">
+            
+                    
+                    promise相关
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.10" data-path="../../Chapter8/实现set.html">
+            
+                <a href="../../Chapter8/实现set.html">
+            
+                    
+                    实现set
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.11" data-path="../../Chapter8/数组去重.html">
+            
+                <a href="../../Chapter8/数组去重.html">
+            
+                    
+                    数组去重
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.12" data-path="../../Chapter8/金钱格式化.html">
+            
+                <a href="../../Chapter8/金钱格式化.html">
+            
+                    
+                    金钱格式化
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../../Chapter9/">
+            
+                <a href="../../Chapter9/">
+            
+                    
+                    你还有什么问题要问我吗
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../../Chapter10/">
+            
+                <a href="../../Chapter10/">
+            
+                    
+                    其他非技术问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本書使用 GitBook 釋出
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >网络模型和网络协议</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x7F51;&#x7EDC;&#x6A21;&#x578B;&#x548C;&#x7F51;&#x7EDC;&#x534F;&#x8BAE;">&#x7F51;&#x7EDC;&#x6A21;&#x578B;&#x548C;&#x7F51;&#x7EDC;&#x534F;&#x8BAE;</h1>
+<p><strong>&#x4E00;&#x3001;OSI&#x4E03;&#x5C42;&#x6A21;&#x578B;&#x3001;TCP/IP&#x6982;&#x5FF5;&#x5C42;&#x6A21;&#x578B;</strong></p>
+<p><img src="../../Images/&#x7F51;&#x7EDC;&#x6A21;&#x578B;.jpg" alt=""></p>
+<p>&#x533A;&#x522B;&#xFF1A;OSI&#x6A21;&#x578B;&#x6CE8;&#x91CD;&#x901A;&#x4FE1;&#x534F;&#x8BAE;&#x5FC5;&#x8981;&#x7684;&#x529F;&#x80FD;&#x662F;&#x4EC0;&#x4E48;&#xFF0C;TCP/IP&#x6A21;&#x578B;&#x66F4;&#x5F3A;&#x8C03;&#x5728;&#x8BA1;&#x7B97;&#x673A;&#x4E0A;&#x5B9E;&#x73B0;&#x534F;&#x8BAE;&#x5E94;&#x8BE5;&#x5F00;&#x53D1;&#x54EA;&#x79CD;&#x7A0B;&#x5E8F;&#x3002;</p>
+<p><strong>&#x4E8C;&#x3001;&#x5E94;&#x7528;&#x5C42;&#x7684;&#x7F51;&#x7EDC;&#x534F;&#x8BAE;</strong></p>
+<ul>
+<li>FTP&#xFF1A;&#x6587;&#x672C;&#x4F20;&#x8F93;&#x534F;&#x8BAE;  </li>
+<li>SMTP&#xFF1A;&#x7B80;&#x5355;&#x90AE;&#x4EF6;&#x4F20;&#x8F93;&#x534F;&#x8BAE;  </li>
+<li>TELNET&#xFF1A;Internet&#x8FDC;&#x7A0B;&#x767B;&#x5F55;&#x670D;&#x52A1;&#x7684;&#x6807;&#x51C6;&#x534F;&#x8BAE;&#x548C;&#x4E3B;&#x8981;&#x65B9;&#x5F0F;  </li>
+<li>HTTP&#xFF1A;&#x8D85;&#x6587;&#x672C;&#x4F20;&#x8F93;&#x534F;&#x8BAE;  </li>
+<li>TFTP&#xFF1A;&#x7B80;&#x5355;&#x6587;&#x4EF6;&#x4F20;&#x8F93;&#x534F;&#x8BAE;  </li>
+<li>DNS&#xFF1A;&#x57DF;&#x540D;&#x7CFB;&#x7EDF;  </li>
+<li>SNMP&#xFF1A;&#x7B80;&#x5355;&#x7F51;&#x7EDC;&#x7BA1;&#x7406;&#x534F;&#x8BAE;  </li>
+<li>NFS&#xFF1A;&#x7F51;&#x7EDC;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;</li>
+</ul>
+<p><strong>&#x4E09;&#x3001;&#x6570;&#x636E;&#x7684;&#x5355;&#x4F4D;</strong></p>
+<ul>
+<li>&#x5305;&#xFF1A;&#x5168;&#x80FD;&#x6027;&#x672F;&#x8BED;</li>
+<li>&#x5E27;&#xFF1A;&#x6570;&#x636E;&#x94FE;&#x8DEF;&#x5C42;&#x4E2D;&#x5305;&#x7684;&#x5355;&#x4F4D;</li>
+<li>&#x6570;&#x636E;&#x5305;&#xFF1A;&#x7F51;&#x7EDC;&#x5C42;&#x4EE5;&#x4E0A;&#x7684;&#x5206;&#x5C42;&#x4E2D;&#x5305;&#x7684;&#x5355;&#x4F4D;</li>
+<li>&#x6BB5;&#xFF1A;TCP&#x6570;&#x636E;&#x6D41;&#x4E2D;&#x7684;&#x4FE1;&#x606F;</li>
+<li>&#x6D88;&#x606F;&#xFF1A;&#x5E94;&#x7528;&#x534F;&#x8BAE;&#x4E2D;&#x6570;&#x636E;&#x7684;&#x5355;&#x4F4D;</li>
+</ul>
+<p><strong>&#x56DB;&#x3001;&#x5730;&#x5740;</strong></p>
+<ul>
+<li>MAC&#x5730;&#x5740;&#xFF1A;&#x6570;&#x636E;&#x94FE;&#x8DEF;&#x4E2D;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x7528;&#x6765;&#x8BC6;&#x522B;&#x540C;&#x4E00;&#x94FE;&#x8DEF;&#x4E2D;&#x4E0D;&#x540C;&#x7684;&#x8BA1;&#x7B97;&#x673A;</li>
+<li>IP&#x5730;&#x5740;&#xFF1A;IP&#x4E2D;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x7528;&#x6765;&#x8BC6;&#x522B;&#x8FDE;&#x63A5;&#x5230;&#x7F51;&#x7EDC;&#x4E2D;&#x7684;&#x4E3B;&#x673A;&#x548C;&#x8DEF;&#x7531;&#x5668;</li>
+<li>&#x7A0B;&#x5E8F;&#x5730;&#x5740;&#xFF08;&#x7AEF;&#x53E3;&#x53F7;&#xFF09;&#xFF1A;&#x8BC6;&#x522B;&#x540C;&#x4E00;&#x53F0;&#x8BA1;&#x7B97;&#x673A;&#x4E2D;&#x8FDB;&#x884C;&#x901A;&#x4FE1;&#x7684;&#x4E0D;&#x540C;&#x5E94;&#x7528;&#x7A0B;&#x5E8F; </li>
+</ul>
+<footer class="page-footer"><span class="copyright">powered by Gitbook</span><span class="footer-modification">&#x6700;&#x540E;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
+2020-05-14 16:37:00
+</span></footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../计算机网络.html" class="navigation navigation-prev " aria-label="Previous page: 计算机网络">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="TCP挥手和握手.html" class="navigation navigation-next " aria-label="Next page: TCP握手挥手">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"网络模型和网络协议","level":"1.3.3.1","depth":3,"next":{"title":"TCP握手挥手","level":"1.3.3.2","depth":3,"path":"Chapter2/计算机网络/TCP挥手和握手.md","ref":"Chapter2/计算机网络/TCP挥手和握手.md","articles":[]},"previous":{"title":"计算机网络","level":"1.3.3","depth":2,"path":"Chapter2/计算机网络.md","ref":"Chapter2/计算机网络.md","articles":[{"title":"网络模型和网络协议","level":"1.3.3.1","depth":3,"path":"Chapter2/计算机网络/网络模型和网络协议.md","ref":"Chapter2/计算机网络/网络模型和网络协议.md","articles":[]},{"title":"TCP握手挥手","level":"1.3.3.2","depth":3,"path":"Chapter2/计算机网络/TCP挥手和握手.md","ref":"Chapter2/计算机网络/TCP挥手和握手.md","articles":[]},{"title":"TCP和UDP","level":"1.3.3.3","depth":3,"path":"Chapter2/计算机网络/TCP&UDP.md","ref":"Chapter2/计算机网络/TCP&UDP.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","code","-lunr","-search","search-pro","splitter","disqus","-highlight","tbfed-pagefooter","pageview-count","katex","livereload"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"","modify_label":"最后修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"disqus":{"useIdentifier":false,"shortName":"webpack-handbook"},"livereload":{},"splitter":{},"search-pro":{},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"pageview-count":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"BarryYe","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"前端面试小本本","language":"zh","gitbook":"*","description":"前端面试题汇总"},"file":{"path":"Chapter2/计算机网络/网络模型和网络协议.md","mtime":"2020-05-14T08:37:00.802Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-26T11:04:00.897Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.16.1/URI.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-disqus/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
